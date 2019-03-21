@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function callSender() {
+            //alert("Im in sender");
+            //var msg = 'Hello World! from Bereket and Kana';
+            var name = document.getElementById("idForName").value;
+            var price = document.getElementById("idForPrice").value;
+            var onSale = document.getElementById("idForOnSale").value;
+            var obj = { name: name, price: price, onSale: onSale };
+            var myJSON = JSON.stringify(obj);
+            //alert(myJSON);
+            // document.getElementById("demo").innerHTML = myJSON;
+            //localhost:8080/?price=10&onSale=yes
+            //?price="+price+"&onSale="+onSale+"&item="+item
+            document.getElementById("formItem").action = "http://localhost:8080";
+            //alert(document.getElementById("formItem").action);
+            document.getElementById("formItem").submit();
+        }
+    </script>
+</head>
+<body>
+    <h2>HTML Forms</h2>
+    <form id="formItem" method="GET" action="">
+        Item Name:<br>
+        <input type="text" id="idForName" name="name" value="">
+        <br>
+        Item price:<br>
+        <input type="text" id="idForPrice" name="price" value=""><br>
+        Is item on Sale?
+        <select id="idForOnSale" name="onSale">
+            <option value="true">YES</option>
+            <option value="false">NO</option>
+        </select>
+        <br/>
+        <input type="submit" value="Submit" onclick="callSender()">
+    </form>
+    <p>If you click the "Submit" button, the form data will be published to the Queue.</p>
+</body>
+</html>
